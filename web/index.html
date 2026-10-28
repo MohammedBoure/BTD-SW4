@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Bloons TD Battles — النسخة الشاملة (الويب والهاتف وطور 8 لاعبين)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 1. LOADING SCREEN -->
+  <div id="loading-screen" class="screen active">
+    <div class="loading-box">
+      <img src="assets/menu/title_text.png" alt="Bloons TD Battles" class="logo-img" />
+      <div class="loading-subtitle">جاري تحميل الـ 7 خرائط الأصلية، الـ 12 برجاً وبناية (الموز والقرية والأشواك والهاون)، والأصوات...</div>
+      <div class="progress-bar-outer">
+        <div id="loading-bar-fill" class="progress-bar-inner"></div>
+      </div>
+      <div id="loading-percent" class="loading-percent">0%</div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN MENU SCREEN (3 MODES: 1v1 AI, 1v1 Friend, & 8-Player Battle Royale Arena) -->
+  <div id="menu-screen" class="screen">
+    <div class="menu-bg-layer">
+      <img src="assets/menu/sea.png" class="bg-sea" alt="" />
+      <img src="assets/menu/sun_glow.png" class="bg-sun" alt="" />
+      <img src="assets/menu/cloud_01.png" class="bg-cloud c1" alt="" />
+      <img src="assets/menu/cloud_02.png" class="bg-cloud c2" alt="" />
+      <img src="assets/menu/island.png" class="bg-island" alt="" />
+      <img src="assets/menu/colosseum.png" class="bg-colosseum" alt="" />
+    </div>
+
+    <div class="menu-top-bar">
+      <button id="btn-mute" class="hud-icon-btn" title="الصوت">🔊 الصوت: مفعل</button>
+      <button id="btn-fullscreen" class="hud-icon-btn" title="ملء الشاشة">⛶ ملء الشاشة</button>
+    </div>
+
+    <div class="menu-center-content">
+      <img src="assets/menu/title_text.png" alt="Bloons TD Battles" class="main-logo" />
+
+      <div class="modes-container">
+        <!-- Mode 1: Singleplayer vs AI -->
+        <div id="card-singleplayer" class="mode-card mode-ai">
+          <div class="mode-card-badge">طور فردي 1 ضد 1</div>
+          <img src="assets/menu/monkey.png" alt="VS AI" class="mode-art" />
+          <div class="mode-title">اللعب الفردي ضد الآلة</div>
+          <div class="mode-desc">اختر الخريطة وتشكيلة الأبراج والبنايات (12 برجاً) وواجه الذكاء الاصطناعي</div>
+          <button class="mode-play-btn">ابدأ المعركة الفردية</button>
+        </div>
+
+        <!-- Mode 2: Play with a Friend (1v1 Online) -->
+        <div id="card-multiplayer" class="mode-card mode-friend">
+          <div class="mode-card-badge badge-gold">أونلاين 1 ضد 1</div>
+          <img src="assets/menu/moab_assassin.png" alt="VS Friend" class="mode-art" />
+          <div class="mode-title">اللعب مع صديق</div>
+          <div class="mode-desc">أنشئ غرفة أو انضم بكود الغرفة لاختيار الخريطة والأبراج واللعب مباشرة</div>
+          <button class="mode-play-btn btn-gold">العب مع صديق</button>
+        </div>
+
+        <!-- Mode 3: 8-Player Multiplayer Battle Royale Arena -->
+        <div id="card-royale" class="mode-card mode-royale">
+          <div class="mode-card-badge badge-royale">👑 جديد — حتى 8 لاعبين</div>
+          <img src="assets/towers/BananaFarm_avatar.png" alt="8-Player Royale" class="mode-art" />
+          <div class="mode-title">الساحة الجماعية (8 لاعبين)</div>
+          <div class="mode-desc">معركة بقاء ملحمية حتى 8 لاعبين (بشر وروبوتات) مع استهداف حر ومكافآت إقصاء وشبكة مباشرة!</div>
+          <button class="mode-play-btn btn-royale">دخول ساحة الـ 8 لاعبين 👑</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. MULTIPLAYER ROOM CONNECTION MODAL (Supports 1v1 & 8-Player Battle Royale) -->
+  <div id="friend-modal" class="modal-overlay hidden">
+    <div class="modal-card friend-modal-card">
+      <div class="modal-header">
+        <h2 id="modal-room-title">الاتصال بغرفة اللعب الجماعي</h2>
+        <button id="btn-close-friend-modal" class="close-x-btn">✖</button>
+      </div>
+
+      <div class="friend-lobby-body">
+        <div class="player-name-row">
+          <label for="input-player-name">اسمك في المعركة:</label>
+          <input id="input-player-name" type="text" value="اللاعب 1" maxlength="16" />
+          <span id="server-status-badge" class="status-badge">جاري الاتصال بالسيرفر...</span>
+        </div>
+
+        <!-- Instant Offline 8-Player Royale Banner (shown when opening from 8-Player Royale card) -->
+        <div id="royale-instant-banner" class="royale-instant-banner hidden">
+          <div>
+            <strong>⚡ بدء فوري بدون انتظار (أوفلاين أو محلي):</strong>
+            <span>العب فوراً في ساحة 8 لاعبين مع إمكانية التحكم بعدد اللاعبين الآليين (Bots)!</span>
+          </div>
+          <button id="btn-start-instant-royale" class="primary-action-btn btn-royale">👑 دخول طابور الـ 8 لاعبين فوراً</button>
+        </div>
+
+        <div class="lobby-split">
+          <div class="lobby-panel">
+            <h3 id="create-panel-title">إنشاء غرفة أونلاين جديدة (المشرف)</h3>
+            <p id="create-panel-desc">أنشئ غرفة على السيرفر وانتقل إلى طابور الاستعداد لدعوة اللاعبين واختيار الخريطة:</p>
+            <button id="btn-create-room" class="primary-action-btn">إنشاء غرفة وتوليد الكود</button>
+          </div>
+
+          <div class="lobby-panel">
+            <h3>الانضمام إلى غرفة مفتوحة</h3>
+            <p>أدخل كود الغرفة أو اختر من الغرف المتاحة أدناه:</p>
+            <div class="join-input-group">
+              <input id="input-room-code" type="text" placeholder="AB23" maxlength="4" />
+              <button id="btn-join-room" class="primary-action-btn btn-gold">انضمام الآن</button>
+            </div>
+            <div id="lobby-error-msg" class="lobby-error"></div>
+
+            <div class="open-rooms-section">
+              <div class="open-rooms-header">
+                <span>الغرف المفتوحة حالياً:</span>
+                <button id="btn-refresh-rooms" class="small-btn">تحديث ↻</button>
+              </div>
+              <div id="open-rooms-list" class="open-rooms-list">
+                <div class="empty-rooms">لا توجد غرف مفتوحة حالياً</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. AUTHENTIC PRE-MATCH QUEUE & TOWER LOADOUT SELECTION SCREEN -->
+  <div id="loadout-screen" class="screen">
+    <div class="loadout-top-bar">
+      <button id="btn-back-from-loadout" class="hud-leave-btn">✖ رجوع للقائمة</button>
+      <div id="loadout-screen-heading" class="loadout-screen-title">طابور الاستعداد واختيار الخريطة والأبراج (Pre-Battle Lobby)</div>
+      <div id="lobby-room-code-pill" class="room-code-pill hidden">كود الغرفة: <strong id="lobby-code-val">----</strong></div>
+    </div>
+
+    <div class="loadout-main-grid">
+      <!-- Left Column: Player vs Opponent Banners OR 8-Player Royale Roster & Map Selection -->
+      <div class="loadout-map-col">
+        <!-- Standard 1v1 Banner -->
+        <div id="vs-1v1-banner" class="vs-players-banner">
+          <div class="vs-player-box blue-box">
+            <img src="assets/menu/monkey.png" alt="Player 1" />
+            <div>
+              <div id="lobby-p1-name" class="vs-p-name">أنت</div>
+              <div id="lobby-p1-status" class="vs-p-status">يختار الأبراج...</div>
+            </div>
+          </div>
+          <div class="vs-bolt">⚡ VS ⚡</div>
+          <div class="vs-player-box red-box">
+            <img src="assets/menu/moab_assassin.png" alt="Player 2" />
+            <div>
+              <div id="lobby-p2-name" class="vs-p-name">الآلة (AI)</div>
+              <div id="lobby-p2-status" class="vs-p-status ready">جاهز للمعركة ✔</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8-Player Battle Royale Lobby Panel -->
+        <div id="royale-lobby-panel" class="royale-lobby-panel hidden">
+          <div class="royale-lobby-header">
+            <span>👑 قائمة لاعبي الساحة الجماعية (<strong id="royale-player-count">1</strong>/8):</span>
+            <div id="royale-bot-controls" class="royale-bot-controls">
+              <button id="btn-add-bot" class="small-btn bot-add-btn">🤖 + إضافة آلي</button>
+              <button id="btn-fill-bots" class="small-btn bot-fill-btn">⚡ ملء 8 لاعبين</button>
+              <button id="btn-remove-bot" class="small-btn bot-rem-btn">➖ إزالة آلي</button>
+            </div>
+          </div>
+          <div id="royale-lobby-slots" class="royale-lobby-slots"></div>
+        </div>
+
+        <div class="map-picker-section">
+          <div class="map-picker-header">
+            <span>خريطة المعركة: <strong id="selected-map-title">Battle Park</strong></span>
+            <span id="host-map-hint" class="host-hint">(المشرف يختار الخريطة)</span>
+          </div>
+          <div id="lobby-maps-carousel" class="lobby-maps-carousel"></div>
+        </div>
+      </div>
+
+      <!-- Right Column: Tower Loadout Selection (Choose 4 of 12 Towers & Buildings + 1 Bonus Slot) -->
+      <div class="loadout-towers-col">
+        <div class="selected-slots-header">
+          <span>تشكيلة أبراجك للمعركة (<strong id="loadout-count-num">4</strong>/4) + برج إضافي مجاني:</span>
+          <button id="btn-random-loadout" class="small-btn">🎲 عشوائي</button>
+        </div>
+
+        <!-- 4 Chosen Slots + 1 Bonus Slot -->
+        <div class="chosen-slots-row">
+          <div id="chosen-towers-slots" class="chosen-towers-slots"></div>
+          <div class="bonus-tower-slot" title="برج إضافي خامس يمنح تلقائياً عند بدء المعركة!">
+            <div class="bonus-label">BONUS</div>
+            <div class="bonus-qmark">?</div>
+          </div>
+        </div>
+
+        <div class="roster-title">جميع الأبراج والبنايات المتاحة (12 برجاً وبناية — اضغط لاختيار 4):</div>
+        <div id="all-towers-roster" class="all-towers-roster"></div>
+
+        <button id="btn-ready-battle" class="battle-ready-btn">⚔️ جاهز — ابدأ المعركة! (BATTLE!)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. AUTHENTIC IN-GAME BATTLE SCREEN (DESKTOP & MOBILE OPTIMIZED + 8-PLAYER ARENA) -->
+  <div id="battle-screen" class="screen">
+    <!-- Top Bar: Left Player Lives/Cash/Eco | Center Opposing Tug-of-War Damage Bar + Round | Right Opponent Lives -->
+    <div class="battle-top-hud">
+      <div class="hud-player-side hud-left">
+        <div class="player-tag" id="hud-left-name">أنت</div>
+        <div id="pill-left-lives" class="stat-pill lives-pill" title="نقاط الحياة">
+          <img src="assets/hud/lives_icon.png" alt="Lives" />
+          <span id="hud-left-lives">150</span>
+        </div>
+        <div id="pill-left-cash" class="stat-pill cash-pill" title="النقود الحالية">
+          <img src="assets/hud/cash_icon.png" alt="Cash" />
+          <span>$<span id="hud-left-cash">650</span></span>
+          <span id="cash-delta-float" class="delta-float hidden"></span>
+        </div>
+        <div id="pill-left-eco" class="stat-pill eco-pill" title="الدخل كل 6 ثوانٍ (Eco)">
+          <img src="assets/hud/energy_icon.png" alt="Eco" />
+          <span>+<strong id="hud-left-eco">250</strong></span>
+          <div class="eco-progress-wrap">
+            <div id="eco-timer-fill" class="eco-progress-fill"></div>
+          </div>
+          <span id="eco-delta-float" class="delta-float eco-float hidden"></span>
+        </div>
+      </div>
+
+      <!-- Center Authentic Opposing Damage / Health Bar & Round Badge -->
+      <div class="hud-center-versus">
+        <div class="damage-tug-bar">
+          <div id="damage-bar-left" class="damage-fill-left" style="width: 50%;"></div>
+          <div id="damage-bar-right" class="damage-fill-right" style="width: 50%;"></div>
+          <img src="assets/hud/energy_bar_lightning.png" class="damage-center-bolt" alt="VS" />
+        </div>
+        <div class="round-eco-row">
+          <span class="round-badge">Round <strong id="hud-round-num">1</strong></span>
+          <span id="royale-alive-badge" class="royale-alive-badge hidden">👑 الأحياء: <strong id="hud-alive-count">8/8</strong></span>
+        </div>
+      </div>
+
+      <div class="hud-player-side hud-right">
+        <!-- Mobile & Royale Camera Focus Switcher (Full My Map / Split / Enemy Map / 8-Player Grid) -->
+        <div class="camera-mode-group">
+          <button id="btn-cam-mine" class="cam-btn" title="تكبير خريطتي بالكامل (مثالي للهاتف)">🔍 خريطتي</button>
+          <button id="btn-cam-split" class="cam-btn active" title="عرض الخريطتين معاً">⚔️ الاثنين</button>
+          <button id="btn-cam-enemy" class="cam-btn" title="رؤية خريطة الخصم المستهدف">👁️ الخصم</button>
+          <button id="btn-cam-grid" class="cam-btn hidden" title="عرض خرائط جميع الـ 8 لاعبين مباشرة في شاشة واحدة!">🌐 الكل (8)</button>
+        </div>
+        <div id="pill-right-lives" class="stat-pill lives-pill">
+          <img src="assets/hud/lives_icon.png" alt="Enemy Lives" />
+          <span id="hud-right-lives">150</span>
+        </div>
+        <div class="player-tag enemy-tag" id="hud-right-name">الخصم</div>
+        <button id="btn-battle-fullscreen" class="hud-fullscreen-btn" title="ملء الشاشة للهاتف">⛶</button>
+        <button id="btn-exit-match" class="hud-leave-btn" title="انسحاب">✖</button>
+      </div>
+    </div>
+
+    <!-- 8-Player Battle Royale Live Leaderboard & Target Selector Strip -->
+    <div id="royale-arena-strip" class="royale-arena-strip hidden">
+      <div class="royale-strip-label">
+        <span>🎯 استهداف الهجوم:</span>
+        <button id="btn-target-auto" class="royale-auto-btn active" title="استهداف تلقائي لأعلى خصم على قيد الحياة">تلقائي ⚡</button>
+      </div>
+      <div id="royale-players-bar" class="royale-players-bar"></div>
+    </div>
+
+    <!-- Main Battle Stage (Canvas + Floating Boosts/Abilities + Bloon Send Queue + Floating Placement Confirm) -->
+    <div id="canvas-container" class="canvas-container">
+      <canvas id="battle-canvas" width="968" height="640"></canvas>
+
+      <!-- Dramatic Elimination / Bounty Notification Banner -->
+      <div id="elimination-banner" class="elimination-banner hidden"></div>
+
+      <!-- Floating Action Bar on Canvas (Tower Boost, Bloon Boost, Activated Abilities) -->
+      <div class="floating-powers-col">
+        <button id="btn-tower-boost" class="boost-btn tower-boost-btn" title="تعزيز سرعة الأبراج (Space)">
+          <img src="assets/hud/tower_boost_icon.png" alt="Tower Boost" />
+          <span id="count-tower-boost" class="boost-count">3</span>
+        </button>
+        <button id="btn-bloon-boost" class="boost-btn bloon-boost-btn" title="تعزيز سرعة البالونات المرسلة (B)">
+          <img src="assets/hud/bloon_boost_icon.png" alt="Bloon Boost" />
+          <span id="count-bloon-boost" class="boost-count">3</span>
+        </button>
+        <div id="active-abilities-bar" class="abilities-bar"></div>
+      </div>
+
+      <!-- Authentic 5-Slot Bloon Send Queue & Pre-Spawn Delay Progress Bar -->
+      <div id="bloon-send-queue-bar" class="bloon-send-queue-bar hidden">
+        <div class="queue-title">طابور الإرسال:</div>
+        <div id="bloon-queue-slots" class="bloon-queue-slots"></div>
+      </div>
+
+      <!-- Floating Eco / Cash Popup Layer -->
+      <div id="floating-popups-layer" class="floating-popups-layer"></div>
+
+      <!-- Mobile & Touch Floating Placement Confirmation Bar (Appears when placing a tower) -->
+      <div id="placement-confirm-bar" class="placement-confirm-bar hidden">
+        <span id="placement-tower-label">اسحب على الخريطة لتحديد الموقع ثم اضغط تأكيد</span>
+        <button id="btn-confirm-place" class="place-ok-btn">✔ وضع البرج هنا</button>
+        <button id="btn-cancel-place" class="place-cancel-btn">✖ إلغاء</button>
+      </div>
+
+      <!-- Authentic Tower Upgrade & Inspector Overlay Panel -->
+      <div id="upgrade-inspector" class="upgrade-inspector hidden">
+        <div class="inspector-left-profile">
+          <div class="inspector-avatar-box">
+            <img id="inspector-avatar" src="assets/hud/dart_monkey_avatar_small.png" alt="Tower" />
+          </div>
+          <div class="inspector-meta">
+            <div id="inspector-name" class="inspector-title">Dart Monkey</div>
+            <div class="inspector-pops"><span id="inspector-stat-label">Pops</span>: <strong id="inspector-pops-val">0</strong></div>
+            <div class="inspector-target-row">
+              <button id="btn-target-mode" class="target-cycle-btn">First (الأول)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="inspector-upgrades-paths">
+          <div id="btn-upgrade-left" class="upgrade-slot">
+            <div class="upgrade-pips" id="pips-left"></div>
+            <img id="img-upgrade-left" src="assets/upgrades/dart_monkey_longer_range_icon.png" alt="Left Upgrade" />
+            <div class="upgrade-slot-text">
+              <div id="title-upgrade-left" class="u-name">Long Range Darts</div>
+              <div id="desc-upgrade-left" class="u-desc">يزيد مدى الرؤية</div>
+              <div id="cost-upgrade-left" class="u-cost">$90</div>
+            </div>
+          </div>
+
+          <div id="btn-upgrade-right" class="upgrade-slot">
+            <div class="upgrade-pips" id="pips-right"></div>
+            <img id="img-upgrade-right" src="assets/upgrades/dart_monkey_sharp_shots_icon.png" alt="Right Upgrade" />
+            <div class="upgrade-slot-text">
+              <div id="title-upgrade-right" class="u-name">Sharp Shots</div>
+              <div id="desc-upgrade-right" class="u-desc">+1 اختراق</div>
+              <div id="cost-upgrade-right" class="u-cost">$140</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="inspector-actions">
+          <button id="btn-sell-tower" class="sell-tower-btn">
+            <img src="assets/hud/bin.png" alt="Sell" />
+            <div>بيع</div>
+            <div class="sell-price">$<span id="sell-value-num">140</span></div>
+          </button>
+          <button id="btn-close-inspector" class="close-inspector-btn">✖</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Authentic BTD Battles Bottom Dock (Towers Deck + Bloon Sends + Camo/Regrow Modifiers + Mobile Mode Switcher) -->
+    <div class="authentic-bottom-dock">
+      <!-- Left Toggle Button (for Mobile single-tray mode or quick tabbing) -->
+      <div class="dock-mode-tabs">
+        <button id="tab-dock-towers" class="dock-tab-btn active" title="قائمة الأبراج">
+          <img src="assets/hud/tower_button.png" alt="Towers" />
+          <span>الأبراج</span>
+        </button>
+        <button id="tab-dock-bloons" class="dock-tab-btn" title="إرسال البالونات">
+          <img src="assets/hud/bloon_button.png" alt="Bloons" />
+          <span>البالونات</span>
+        </button>
+      </div>
+
+      <!-- Towers Loadout Tray -->
+      <div id="tray-towers" class="dock-tray towers-tray active-tray">
+        <div id="tower-shop-list" class="tower-shop-horizontal"></div>
+      </div>
+
+      <!-- Bloon Sends Tray + Camo & Regrow Modifiers -->
+      <div id="tray-bloons" class="dock-tray bloons-tray">
+        <div class="bloon-modifiers-col">
+          <button id="btn-toggle-camo" class="mod-toggle-btn" title="إرسال بالونات مخفية/مموهة (Camo) — يفتح في الجولة 12">
+            <img src="assets/bloons/camo_overlay.png" alt="Camo" />
+            <span>Camo</span>
+          </button>
+          <button id="btn-toggle-regrow" class="mod-toggle-btn" title="إرسال بالونات متجددة (Regrow) — يفتح في الجولة 8">
+            <img src="assets/bloons/stock_regen_bloon.png" alt="Regrow" />
+            <span>Regrow</span>
+          </button>
+        </div>
+        <div id="bloon-send-list" class="bloon-send-list"></div>
+      </div>
+    </div>
+
+    <!-- Game Over Victory / Defeat Modal -->
+    <div id="gameover-modal" class="modal-overlay hidden">
+      <div class="modal-card gameover-card">
+        <h1 id="gameover-title" class="gameover-title">انتصار ساحق! 🏆</h1>
+        <p id="gameover-subtitle" class="gameover-subtitle">لقد دمرت دفاعات الخصم بالكامل!</p>
+        <div id="gameover-standings" class="gameover-standings hidden"></div>
+        <div class="gameover-buttons">
+          <button id="btn-play-again" class="primary-action-btn">العودة لطابور الاستعداد 🔄</button>
+          <button id="btn-back-menu" class="primary-action-btn btn-gold">القائمة الرئيسية 🏠</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="game_data.js"></script>
+  <script src="audio.js"></script>
+  <script src="engine.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

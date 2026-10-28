@@ -1,0 +1,9 @@
+{
+  "name": "btd-battles-web-clone",
+  "version": "1.0.0",
+  "description": "Bloons TD Battles Complete Web & Multiplayer Clone (Desktop & Mobile)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

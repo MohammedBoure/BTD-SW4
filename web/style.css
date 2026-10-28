@@ -1,0 +1,2097 @@
+/* ==========================================================================
+   Bloons TD Battles — Authentic In-Match HUD, Pre-Match Lobby, & Mobile Zoom
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0d1624;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   1. LOADING SCREEN
+   -------------------------------------------------------------------------- */
+#loading-screen {
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #1d4e89 0%, #091526 100%);
+}
+
+.loading-box {
+  text-align: center;
+  max-width: 480px;
+  width: 90%;
+  padding: 28px;
+  background: rgba(10, 22, 40, 0.88);
+  border: 3px solid #f7b731;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+}
+
+.logo-img {
+  max-width: 340px;
+  width: 85%;
+  height: auto;
+  margin-bottom: 14px;
+}
+
+.loading-subtitle {
+  font-size: 15px;
+  color: #d9ecff;
+  margin-bottom: 16px;
+}
+
+.progress-bar-outer {
+  width: 100%;
+  height: 22px;
+  background: #102033;
+  border-radius: 12px;
+  border: 2px solid #45aaf2;
+  overflow: hidden;
+}
+
+.progress-bar-inner {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #26de81, #fed330);
+  transition: width 0.15s ease;
+}
+
+.loading-percent {
+  margin-top: 8px;
+  font-weight: bold;
+  color: #fed330;
+}
+
+/* --------------------------------------------------------------------------
+   2. MAIN MENU SCREEN (2 MODES ONLY)
+   -------------------------------------------------------------------------- */
+#menu-screen {
+  overflow: hidden;
+  justify-content: space-between;
+}
+
+.menu-bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, #3898ff 0%, #87cefa 55%, #1c6ba0 55%, #0e3f66 100%);
+  overflow: hidden;
+}
+
+.bg-sea {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 48%;
+  object-fit: cover;
+  opacity: 0.75;
+}
+
+.bg-sun {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 520px;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.bg-island {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(850px, 95vw);
+  pointer-events: none;
+}
+
+.bg-colosseum {
+  position: absolute;
+  bottom: 24%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(320px, 45vw);
+  pointer-events: none;
+}
+
+.bg-cloud {
+  position: absolute;
+  opacity: 0.85;
+  animation: floatCloud 28s linear infinite;
+}
+
+.bg-cloud.c1 { top: 8%; left: 10%; width: 180px; }
+.bg-cloud.c2 { top: 14%; right: 12%; width: 210px; animation-duration: 36s; }
+
+@keyframes floatCloud {
+  0% { transform: translateX(-30px); }
+  50% { transform: translateX(35px); }
+  100% { transform: translateX(-30px); }
+}
+
+.menu-top-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 10px 18px;
+}
+
+.hud-icon-btn {
+  background: linear-gradient(180deg, #2d3e50, #1a252f);
+  color: #fff;
+  border: 2px solid #f7b731;
+  border-radius: 10px;
+  padding: 6px 13px;
+  font-size: 13.5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.menu-center-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 8px 16px 20px;
+}
+
+.main-logo {
+  width: min(370px, 74vw);
+  max-height: 135px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.65));
+  margin-bottom: 14px;
+}
+
+.modes-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  max-width: 1120px;
+  width: 100%;
+}
+
+.mode-card {
+  flex: 1 1 260px;
+  max-width: 350px;
+  background: linear-gradient(180deg, rgba(20, 42, 74, 0.94), rgba(10, 22, 42, 0.97));
+  border: 3px solid #38b6ff;
+  border-radius: 18px;
+  padding: 15px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.65);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+  position: relative;
+}
+
+.mode-card.mode-friend {
+  border-color: #f7b731;
+}
+
+.mode-card.mode-royale {
+  border-color: #a55eea;
+  background: linear-gradient(180deg, rgba(46, 20, 78, 0.95), rgba(19, 10, 38, 0.98));
+  box-shadow: 0 10px 30px rgba(165, 94, 234, 0.35);
+}
+
+.mode-card:hover {
+  transform: translateY(-4px);
+}
+
+.mode-card-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #20bf6b;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: bold;
+}
+
+.mode-card-badge.badge-gold {
+  background: #f7b731;
+  color: #111;
+}
+
+.mode-art {
+  height: 105px;
+  object-fit: contain;
+  margin: 4px 0 8px;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.55));
+}
+
+.mode-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fed330;
+  margin-bottom: 5px;
+}
+
+.mode-desc {
+  font-size: 13px;
+  color: #c8def7;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.mode-play-btn, .primary-action-btn {
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(180deg, #26de81 0%, #159957 100%);
+  border: 2px solid #a8ffcf;
+  border-radius: 12px;
+  cursor: pointer;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.mode-play-btn.btn-gold, .primary-action-btn.btn-gold {
+  background: linear-gradient(180deg, #fed330 0%, #f39c12 100%);
+  border-color: #fff3b0;
+  color: #1b1400;
+  text-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. MULTIPLAYER ROOM MODAL
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(5, 10, 20, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+.modal-card {
+  background: linear-gradient(180deg, #1b3152, #0f1d33);
+  border: 3px solid #f7b731;
+  border-radius: 18px;
+  max-width: 740px;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 16px 20px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.85);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.14);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.modal-header h2 {
+  font-size: 19px;
+  color: #fed330;
+}
+
+.close-x-btn {
+  background: #eb3b5a;
+  color: #fff;
+  border: 2px solid #ffb8c6;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.player-name-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  background: rgba(0, 0, 0, 0.28);
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.player-name-row input {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 2px solid #45aaf2;
+  background: #0a1424;
+  color: #fff;
+  font-weight: bold;
+}
+
+.status-badge {
+  margin-right: auto;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  background: #20bf6b;
+  color: #fff;
+  font-weight: bold;
+}
+
+.lobby-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.lobby-panel {
+  background: rgba(9, 18, 32, 0.78);
+  border: 2px solid #2d527c;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lobby-panel h3 {
+  color: #fed330;
+  font-size: 16px;
+}
+
+.lobby-panel p {
+  font-size: 12.5px;
+  color: #b8d0eb;
+}
+
+.join-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+.join-input-group input {
+  width: 115px;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: #081220;
+  color: #fed330;
+  border: 2px solid #f7b731;
+  border-radius: 10px;
+}
+
+.lobby-error {
+  color: #ff5e7e;
+  font-size: 12.5px;
+  font-weight: bold;
+  min-height: 16px;
+}
+
+.open-rooms-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12.5px;
+  margin-bottom: 4px;
+}
+
+.small-btn {
+  background: #2d527c;
+  color: #fff;
+  border: 1px solid #6396c9;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.open-rooms-list {
+  max-height: 105px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.room-row-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #13253e;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 12.5px;
+}
+
+.room-row-item button {
+  background: #26de81;
+  color: #0b2617;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   4. AUTHENTIC PRE-MATCH QUEUE & TOWER LOADOUT SCREEN (#loadout-screen)
+   -------------------------------------------------------------------------- */
+#loadout-screen {
+  background: radial-gradient(circle at top, #1f3b64 0%, #0b1628 100%);
+  overflow-y: auto;
+}
+
+.loadout-top-bar {
+  height: 48px;
+  background: linear-gradient(180deg, #162a47, #0c182b);
+  border-bottom: 3px solid #f7b731;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  flex-shrink: 0;
+}
+
+.loadout-screen-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fed330;
+}
+
+.room-code-pill {
+  background: #10243d;
+  border: 2px solid #26de81;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+}
+
+.room-code-pill strong {
+  color: #26de81;
+  letter-spacing: 2px;
+  font-size: 16px;
+}
+
+.loadout-main-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.05fr 1.15fr;
+  gap: 14px;
+  padding: 12px 16px;
+  max-width: 1180px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 0;
+}
+
+.loadout-map-col, .loadout-towers-col {
+  background: rgba(11, 22, 38, 0.85);
+  border: 2px solid #355c8a;
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vs-players-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.vs-player-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 2px solid #45aaf2;
+  background: linear-gradient(90deg, rgba(24, 78, 152, 0.7), rgba(12, 35, 68, 0.8));
+}
+
+.vs-player-box.red-box {
+  border-color: #ff5e57;
+  background: linear-gradient(90deg, rgba(152, 28, 38, 0.7), rgba(68, 12, 18, 0.8));
+}
+
+.vs-player-box img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.vs-p-name {
+  font-weight: 800;
+  font-size: 14px;
+  color: #fff;
+}
+
+.vs-p-status {
+  font-size: 11.5px;
+  color: #fed330;
+}
+
+.vs-p-status.ready {
+  color: #26de81;
+  font-weight: bold;
+}
+
+.vs-bolt {
+  font-weight: 900;
+  color: #fed330;
+  font-size: 14px;
+}
+
+.map-picker-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
+
+.map-picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+}
+
+.map-picker-header strong {
+  color: #fed330;
+}
+
+.host-hint {
+  font-size: 11.5px;
+  color: #a5b1c2;
+}
+
+.lobby-maps-carousel {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  gap: 8px;
+  overflow-y: auto;
+  padding: 2px;
+}
+
+.lobby-map-card {
+  background: #0d1829;
+  border: 2.5px solid #355c8a;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+.lobby-map-card.selected {
+  border-color: #26de81;
+  box-shadow: 0 0 12px rgba(38, 222, 129, 0.65);
+  transform: scale(1.02);
+}
+
+.lobby-map-card.disabled-map {
+  pointer-events: none;
+  opacity: 0.78;
+}
+
+.lobby-map-card img {
+  width: 100%;
+  height: 82px;
+  object-fit: cover;
+  display: block;
+}
+
+.lobby-map-card-name {
+  font-size: 11.5px;
+  font-weight: bold;
+  padding: 5px 4px;
+  color: #e8f1ff;
+}
+
+/* Chosen 4 Towers + Bonus Slot */
+.selected-slots-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+}
+
+.chosen-slots-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 8px;
+  border-radius: 12px;
+  border: 1.5px solid #2d527c;
+}
+
+.chosen-towers-slots {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  flex: 1;
+}
+
+.chosen-slot-card {
+  height: 74px;
+  background: url('assets/hud/tower_thumbs_box.png') no-repeat center/100% 100%, #3b2414;
+  border: 2px solid #26de81;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.chosen-slot-card.empty-slot {
+  background: #101e33;
+  border: 2px dashed #4b6584;
+  color: #778ca3;
+  font-size: 11px;
+}
+
+.chosen-slot-card img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.chosen-slot-card span {
+  font-size: 10.5px;
+  font-weight: bold;
+  color: #fed330;
+}
+
+.bonus-tower-slot {
+  width: 66px;
+  height: 74px;
+  background: linear-gradient(180deg, #f7b731, #c27d0e);
+  border: 2px solid #fff3b0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #1c1200;
+  font-weight: 900;
+}
+
+.bonus-label {
+  font-size: 10px;
+}
+
+.bonus-qmark {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.roster-title {
+  font-size: 12.5px;
+  color: #b8d0eb;
+}
+
+.all-towers-roster {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.roster-tower-card {
+  background: #142640;
+  border: 2px solid #386796;
+  border-radius: 10px;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.1s ease;
+}
+
+.roster-tower-card.picked {
+  border-color: #26de81;
+  background: #15382c;
+  box-shadow: 0 0 10px rgba(38, 222, 129, 0.5);
+}
+
+.roster-tower-card img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.roster-tower-name {
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.roster-tower-cost {
+  font-size: 11px;
+  color: #fed330;
+  font-weight: 900;
+}
+
+.battle-ready-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 17px;
+  font-weight: 900;
+  color: #fff;
+  background: linear-gradient(180deg, #26de81 0%, #108548 100%);
+  border: 2.5px solid #b8ffd8;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.55);
+}
+
+.battle-ready-btn.waiting-other {
+  background: linear-gradient(180deg, #f7b731, #d68910);
+  color: #111;
+}
+
+/* --------------------------------------------------------------------------
+   5. AUTHENTIC IN-GAME BATTLE SCREEN (TOP HUD + CANVAS + BOTTOM DOCK)
+   -------------------------------------------------------------------------- */
+#battle-screen {
+  background: #0b131e;
+  justify-content: space-between;
+}
+
+.battle-top-hud {
+  height: 46px;
+  background: linear-gradient(180deg, #2b1d12 0%, #170f09 100%);
+  border-bottom: 2.5px solid #7d5427;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  gap: 6px;
+  direction: ltr;
+  flex-shrink: 0;
+}
+
+.hud-player-side {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.player-tag {
+  background: #1e6fd9;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 7px;
+  font-weight: 800;
+  font-size: 12px;
+  border: 1px solid #82bfff;
+}
+
+.player-tag.enemy-tag {
+  background: #c92a2a;
+  border-color: #ff8787;
+}
+
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.62);
+  border: 1.5px solid #6b4c2b;
+  padding: 2px 9px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 13px;
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stat-pill.pulse-green {
+  transform: scale(1.12);
+  box-shadow: 0 0 14px rgba(56, 229, 77, 0.85);
+  border-color: #38e54d;
+}
+
+.stat-pill.pulse-red {
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(255, 94, 87, 0.85);
+}
+
+.stat-pill img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.lives-pill { color: #ff6b81; }
+.cash-pill { color: #fed330; }
+.eco-pill { color: #38e54d; }
+
+.delta-float {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 900;
+  padding: 1px 6px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.82);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 25;
+  animation: deltaPop 0.85s ease forwards;
+}
+
+@keyframes deltaPop {
+  0% { opacity: 1; transform: translate(-50%, 0) scale(0.9); }
+  30% { opacity: 1; transform: translate(-50%, 4px) scale(1.1); }
+  100% { opacity: 0; transform: translate(-50%, 16px) scale(0.95); }
+}
+
+.hud-center-versus {
+  flex: 1;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.damage-tug-bar {
+  width: 100%;
+  height: 18px;
+  background: url('assets/hud/energy_bar_bg.png') no-repeat center/100% 100%, #111;
+  border: 2px solid #d49b35;
+  border-radius: 9px;
+  display: flex;
+  position: relative;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.damage-fill-left {
+  height: 100%;
+  background: linear-gradient(180deg, #54d0ff 0%, #1976d2 50%, #0d47a1 100%);
+  border-radius: 7px 0 0 7px;
+  transition: width 0.25s ease;
+}
+
+.damage-fill-right {
+  height: 100%;
+  background: linear-gradient(180deg, #ff6b6b 0%, #d32f2f 50%, #8e0000 100%);
+  border-radius: 0 7px 7px 0;
+  transition: width 0.25s ease;
+}
+
+.damage-center-bolt {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 26px;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.round-eco-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.round-badge {
+  font-size: 12px;
+  font-weight: bold;
+  color: #f7d794;
+}
+
+.eco-progress-wrap {
+  width: 46px;
+  height: 7px;
+  background: #1a1a1a;
+  border: 1px solid #555;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-left: 3px;
+}
+
+.eco-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #26de81, #fed330);
+}
+
+/* Authentic 5-Slot Bloon Send Queue Bar */
+.bloon-send-queue-bar {
+  position: absolute;
+  bottom: 8px;
+  left: 62px;
+  background: rgba(16, 28, 46, 0.92);
+  border: 2px solid #45aaf2;
+  border-radius: 11px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 12;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.75);
+}
+
+.queue-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #fed330;
+}
+
+.bloon-queue-slots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.queue-slot-item {
+  width: 34px;
+  height: 34px;
+  background: #0d1829;
+  border: 1.5px solid #38b6ff;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.queue-slot-item.active-sending {
+  border-color: #26de81;
+  box-shadow: 0 0 8px rgba(38, 222, 129, 0.8);
+}
+
+.queue-slot-item img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  z-index: 2;
+}
+
+.queue-slot-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(38, 222, 129, 0.38);
+  z-index: 1;
+}
+
+/* Floating Popups Layer (+Eco / -$Cost when pressing bloon sends) */
+.floating-popups-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  overflow: hidden;
+}
+
+.floating-eco-popup {
+  position: absolute;
+  font-size: 13px;
+  font-weight: 900;
+  padding: 2px 7px;
+  border-radius: 8px;
+  background: rgba(10, 24, 16, 0.88);
+  border: 1.5px solid #26de81;
+  color: #26de81;
+  text-shadow: 0 1px 2px #000;
+  animation: floatUpFade 1.05s ease-out forwards;
+}
+
+.floating-eco-popup.neg {
+  border-color: #ff6b81;
+  color: #ff6b81;
+}
+
+@keyframes floatUpFade {
+  0% { opacity: 1; transform: translate(-50%, 0) scale(0.85); }
+  25% { opacity: 1; transform: translate(-50%, -14px) scale(1.08); }
+  100% { opacity: 0; transform: translate(-50%, -42px) scale(0.95); }
+}
+
+/* Mobile Camera Mode Switcher */
+.camera-mode-group {
+  display: flex;
+  gap: 3px;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 2px;
+  border-radius: 8px;
+  border: 1px solid #6b4c2b;
+}
+
+.cam-btn {
+  background: transparent;
+  color: #d1e5ff;
+  border: none;
+  padding: 3px 7px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cam-btn.active {
+  background: #f7b731;
+  color: #111;
+}
+
+.hud-leave-btn {
+  background: #b33939;
+  color: #fff;
+  border: 1px solid #ff7979;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* --------------------------------------------------------------------------
+   6. CANVAS STAGE + FLOATING POWERS + PLACEMENT CONFIRM BAR
+   -------------------------------------------------------------------------- */
+.canvas-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #070d14;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+#battle-canvas {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
+  touch-action: none;
+}
+
+/* Floating Boosts & Abilities on Left Edge of Canvas */
+.floating-powers-col {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 12;
+}
+
+.boost-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+  border: 2px solid #fed330;
+  background: rgba(38, 22, 10, 0.9);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.65);
+}
+
+.boost-btn img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.boost-count {
+  position: absolute;
+  bottom: -3px;
+  right: -3px;
+  background: #eb3b5a;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.abilities-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ability-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+  border: 2px solid #38b6ff;
+  background: rgba(14, 32, 56, 0.92);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.65);
+}
+
+.ability-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ability-cooldown-mask {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fed330;
+  font-weight: 900;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile Floating Placement Confirm Bar */
+.placement-confirm-bar {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 28, 48, 0.95);
+  border: 2px solid #26de81;
+  border-radius: 12px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 16;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
+}
+
+.placement-confirm-bar span {
+  font-size: 12.5px;
+  font-weight: bold;
+  color: #d1e5ff;
+}
+
+.place-ok-btn {
+  background: #26de81;
+  color: #072614;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.place-cancel-btn {
+  background: #eb3b5a;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   7. AUTHENTIC BOTTOM DOCK (TOWERS TRAY + BLOON SENDS + CAMO/REGROW TOGGLES)
+   -------------------------------------------------------------------------- */
+.authentic-bottom-dock {
+  height: 74px;
+  background: linear-gradient(180deg, #321f11 0%, #1a0f08 100%);
+  border-top: 3px solid #8a5d2b;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  gap: 8px;
+  direction: ltr;
+  flex-shrink: 0;
+}
+
+.dock-mode-tabs {
+  display: none; /* Shown on compact screens to toggle full width between Towers & Bloons */
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dock-tab-btn {
+  background: #24160c;
+  border: 1.5px solid #7d5427;
+  color: #d1e5ff;
+  border-radius: 8px;
+  padding: 3px 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dock-tab-btn.active {
+  background: #f7b731;
+  color: #111;
+  border-color: #fff;
+}
+
+.dock-tab-btn img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.dock-tray {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.towers-tray {
+  padding-right: 8px;
+  border-right: 2px solid rgba(255, 255, 255, 0.14);
+}
+
+.tower-shop-horizontal {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.shop-tower-card {
+  width: 62px;
+  height: 62px;
+  background: url('assets/hud/tower_thumbs_box.png') no-repeat center/100% 100%, #4b321c;
+  border: 2px solid #966939;
+  border-radius: 10px;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.shop-tower-card.selected {
+  border-color: #26de81;
+  box-shadow: 0 0 12px rgba(38, 222, 129, 0.9);
+  transform: translateY(-3px);
+}
+
+.shop-tower-card.unaffordable {
+  opacity: 0.48;
+}
+
+.shop-tower-card img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.shop-tower-cost {
+  font-size: 11.5px;
+  font-weight: 900;
+  color: #fed330;
+  line-height: 1;
+}
+
+.shop-hotkey {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  font-size: 9.5px;
+  color: #cbd8e8;
+  font-weight: bold;
+}
+
+.bloons-tray {
+  flex: 1;
+  gap: 6px;
+  min-width: 0;
+}
+
+/* Camo & Regrow Modifier Buttons */
+.bloon-modifiers-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.mod-toggle-btn {
+  height: 30px;
+  padding: 2px 8px;
+  background: #172a45;
+  border: 1.5px solid #45aaf2;
+  border-radius: 7px;
+  color: #d1e5ff;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.mod-toggle-btn img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.mod-toggle-btn.active {
+  background: #20bf6b;
+  border-color: #b8ffd8;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(32, 191, 107, 0.7);
+}
+
+.mod-toggle-btn.locked-mod {
+  opacity: 0.4;
+}
+
+.bloon-send-list {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow-x: auto;
+  padding: 4px 2px;
+}
+
+.bloon-send-btn {
+  min-width: 60px;
+  height: 58px;
+  background: linear-gradient(180deg, #1e375a, #102036);
+  border: 2px solid #45aaf2;
+  border-radius: 10px;
+  padding: 3px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.bloon-send-btn.locked {
+  opacity: 0.30;
+  pointer-events: none;
+}
+
+.bloon-send-btn.unaffordable {
+  opacity: 0.52;
+}
+
+.bloon-send-btn img {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+}
+
+.send-cost {
+  font-size: 11px;
+  font-weight: 900;
+  color: #fed330;
+  line-height: 1;
+}
+
+.send-eco {
+  font-size: 9.5px;
+  font-weight: bold;
+  color: #26de81;
+  line-height: 1;
+}
+
+.send-eco.negative {
+  color: #ff6b81;
+}
+
+.send-key {
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  font-size: 9px;
+  color: #a5b1c2;
+}
+
+/* --------------------------------------------------------------------------
+   8. UPGRADE INSPECTOR OVERLAY
+   -------------------------------------------------------------------------- */
+.upgrade-inspector {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(850px, 97%);
+  background: linear-gradient(180deg, rgba(44, 28, 15, 0.96), rgba(24, 15, 8, 0.98));
+  border: 3px solid #d49b35;
+  border-radius: 14px;
+  padding: 7px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  direction: rtl;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
+  z-index: 15;
+}
+
+.inspector-left-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inspector-avatar-box {
+  width: 50px;
+  height: 50px;
+  background: url('assets/hud/tower_profile_pic_box.png') no-repeat center/100% 100%, #1d1209;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.inspector-avatar-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.inspector-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #fed330;
+}
+
+.inspector-pops {
+  font-size: 11px;
+  color: #d1e5ff;
+}
+
+.target-cycle-btn {
+  background: #20bf6b;
+  color: #fff;
+  border: 1px solid #a5ffd0;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 11px;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.inspector-upgrades-paths {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.upgrade-slot {
+  background: linear-gradient(180deg, #275a2b, #17381a);
+  border: 2px solid #58ff6e;
+  border-radius: 10px;
+  padding: 5px 7px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  position: relative;
+}
+
+.upgrade-slot.locked, .upgrade-slot.maxed {
+  background: linear-gradient(180deg, #3a3f47, #22262b);
+  border-color: #7f8fa6;
+}
+
+.upgrade-slot.unaffordable {
+  background: linear-gradient(180deg, #5a2222, #361212);
+  border-color: #ff5e57;
+}
+
+.upgrade-slot img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.upgrade-slot-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.u-name {
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.u-desc {
+  font-size: 10px;
+  color: #d8f3dc;
+  line-height: 1.15;
+}
+
+.u-cost {
+  font-size: 12.5px;
+  font-weight: 900;
+  color: #fed330;
+}
+
+.upgrade-pips {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  display: flex;
+  gap: 2px;
+}
+
+.pip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #333;
+  border: 1px solid #888;
+}
+
+.pip-dot.filled {
+  background: #58ff6e;
+  border-color: #fff;
+}
+
+.inspector-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sell-tower-btn {
+  background: linear-gradient(180deg, #eb3b5a, #a81c35);
+  border: 2px solid #ffb8c6;
+  border-radius: 10px;
+  color: #fff;
+  padding: 4px 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 10.5px;
+  font-weight: bold;
+}
+
+.sell-tower-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+.sell-price {
+  color: #fed330;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.close-inspector-btn {
+  background: #4b6584;
+  color: #fff;
+  border: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Gameover card */
+.gameover-card {
+  text-align: center;
+  max-width: 440px;
+}
+
+.gameover-title {
+  font-size: 30px;
+  color: #fed330;
+  margin-bottom: 8px;
+}
+
+.gameover-subtitle {
+  font-size: 15px;
+  color: #d1e5ff;
+  margin-bottom: 18px;
+}
+
+.gameover-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   9. 8-PLAYER BATTLE ROYALE ARENA & LOBBY STYLES
+   -------------------------------------------------------------------------- */
+.mode-card-badge.badge-royale {
+  background: linear-gradient(90deg, #a55eea, #eb3b5a);
+  color: #fff;
+}
+
+.mode-play-btn.btn-royale, .primary-action-btn.btn-royale {
+  background: linear-gradient(180deg, #a55eea 0%, #6c2bd9 100%);
+  border-color: #e2c6ff;
+  color: #fff;
+}
+
+.royale-instant-banner {
+  background: linear-gradient(90deg, rgba(108, 43, 217, 0.38), rgba(235, 59, 90, 0.32));
+  border: 2px solid #a55eea;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.royale-instant-banner div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 12.5px;
+  color: #e8d9ff;
+}
+
+.royale-instant-banner strong {
+  color: #fed330;
+  font-size: 14px;
+}
+
+.royale-instant-banner .primary-action-btn {
+  width: auto;
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.royale-lobby-panel {
+  background: rgba(24, 14, 46, 0.85);
+  border: 2px solid #a55eea;
+  border-radius: 12px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.royale-lobby-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #f3e5ff;
+}
+
+.royale-lobby-header strong {
+  color: #fed330;
+}
+
+.royale-bot-controls {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.bot-add-btn {
+  background: #20bf6b;
+  border-color: #7bed9f;
+}
+
+.bot-fill-btn {
+  background: #8854d0;
+  border-color: #d1b3ff;
+}
+
+.bot-rem-btn {
+  background: #eb3b5a;
+  border-color: #ff9ff3;
+}
+
+.royale-lobby-slots {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.royale-slot-pill {
+  background: #131f35;
+  border: 1.5px solid #386796;
+  border-radius: 8px;
+  padding: 5px 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+}
+
+.royale-slot-pill.filled-human {
+  border-color: #26de81;
+  background: rgba(20, 62, 46, 0.78);
+}
+
+.royale-slot-pill.filled-bot {
+  border-color: #a55eea;
+  background: rgba(48, 24, 78, 0.78);
+}
+
+.royale-slot-pill.empty-royale-slot {
+  border-style: dashed;
+  opacity: 0.55;
+  color: #8899ac;
+}
+
+.royale-slot-name {
+  font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.royale-slot-tag {
+  font-size: 10px;
+  color: #fed330;
+}
+
+.royale-alive-badge {
+  background: rgba(165, 94, 234, 0.3);
+  border: 1px solid #a55eea;
+  color: #f3e5ff;
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.hud-fullscreen-btn {
+  background: #2d527c;
+  color: #fff;
+  border: 1px solid #6396c9;
+  padding: 3px 7px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Live 8-Player Royale Arena Strip under Top HUD */
+.royale-arena-strip {
+  height: 36px;
+  background: linear-gradient(180deg, #1b102e 0%, #10091d 100%);
+  border-bottom: 2px solid #8854d0;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  gap: 8px;
+  direction: rtl;
+  flex-shrink: 0;
+  overflow-x: auto;
+}
+
+.royale-strip-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #e2c6ff;
+  flex-shrink: 0;
+}
+
+.royale-auto-btn {
+  background: #2c1c47;
+  color: #d1b3ff;
+  border: 1.5px solid #8854d0;
+  border-radius: 7px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.royale-auto-btn.active {
+  background: #20bf6b;
+  color: #fff;
+  border-color: #b8ffd8;
+}
+
+.royale-players-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+  overflow-x: auto;
+}
+
+.royale-player-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(20, 32, 54, 0.92);
+  border: 1.5px solid #3b5980;
+  border-radius: 8px;
+  padding: 2px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.1s ease, border-color 0.1s ease;
+}
+
+.royale-player-chip.is-me {
+  border-color: #38b6ff;
+  background: rgba(16, 52, 92, 0.92);
+}
+
+.royale-player-chip.is-target {
+  border-color: #ff5e57;
+  background: rgba(98, 20, 28, 0.92);
+  box-shadow: 0 0 8px rgba(255, 94, 87, 0.7);
+}
+
+.royale-player-chip.is-viewing {
+  outline: 2px solid #fed330;
+}
+
+.royale-player-chip.is-eliminated {
+  opacity: 0.42;
+  border-color: #555;
+  text-decoration: line-through;
+  pointer-events: none;
+}
+
+.chip-name {
+  font-weight: 800;
+  color: #fff;
+  max-width: 78px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chip-lives {
+  color: #ff6b81;
+  font-weight: 900;
+}
+
+.chip-spy-btn {
+  background: rgba(255, 255, 255, 0.14);
+  border: none;
+  color: #fed330;
+  border-radius: 4px;
+  padding: 1px 4px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.elimination-banner {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, rgba(136, 84, 208, 0.95), rgba(235, 59, 90, 0.95));
+  border: 2px solid #fed330;
+  border-radius: 14px;
+  padding: 7px 18px;
+  font-size: 13.5px;
+  font-weight: 900;
+  color: #fff;
+  z-index: 24;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+  text-align: center;
+  animation: deltaPop 2.4s ease forwards;
+}
+
+.gameover-standings {
+  background: rgba(10, 18, 32, 0.85);
+  border: 1.5px solid #386796;
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-bottom: 14px;
+  max-height: 185px;
+  overflow-y: auto;
+  text-align: right;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.standing-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.standing-row.me {
+  background: rgba(38, 222, 129, 0.22);
+  border: 1px solid #26de81;
+  font-weight: bold;
+}
+
+/* --------------------------------------------------------------------------
+   10. MOBILE & TABLET RESPONSIVE OPTIMIZATIONS (EXPANDED PHONE EXPERIENCE)
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .loadout-main-grid {
+    grid-template-columns: 1fr;
+  }
+  .lobby-split {
+    grid-template-columns: 1fr;
+  }
+  .royale-lobby-slots {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dock-mode-tabs {
+    display: flex;
+  }
+  .dock-tray {
+    display: none;
+  }
+  .dock-tray.active-tray {
+    display: flex;
+    flex: 1;
+  }
+  .towers-tray {
+    border-right: none;
+  }
+  .upgrade-inspector {
+    flex-wrap: wrap;
+    padding: 5px 8px;
+  }
+  .inspector-upgrades-paths {
+    width: 100%;
+    order: 3;
+  }
+  .battle-top-hud {
+    height: 40px;
+    padding: 0 4px;
+    gap: 3px;
+  }
+  .stat-pill {
+    padding: 2px 6px;
+    font-size: 11.5px;
+  }
+  .authentic-bottom-dock {
+    height: 68px;
+    padding: 0 5px;
+  }
+  .shop-tower-card {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+@media (max-height: 520px) {
+  /* Landscape Mobile Phones: Maximize Canvas Area! */
+  .battle-top-hud {
+    height: 34px;
+  }
+  .royale-arena-strip {
+    height: 28px;
+  }
+  .authentic-bottom-dock {
+    height: 58px;
+  }
+  .shop-tower-card {
+    width: 50px;
+    height: 50px;
+  }
+  .shop-tower-card img {
+    width: 30px;
+    height: 30px;
+  }
+  .bloon-send-btn {
+    min-width: 52px;
+    height: 48px;
+  }
+  .boost-btn, .ability-btn {
+    width: 38px;
+    height: 38px;
+  }
+}

@@ -1,0 +1,1422 @@
+{
+  "bomb_tower_01": {
+    "url": "assets/towers_ingame/bomb_tower_01.png",
+    "w": 21,
+    "h": 65
+  },
+  "bomb_tower_02": {
+    "url": "assets/towers_ingame/bomb_tower_02.png",
+    "w": 21,
+    "h": 65
+  },
+  "bomb_tower_03": {
+    "url": "assets/towers_ingame/bomb_tower_03.png",
+    "w": 21,
+    "h": 65
+  },
+  "bomb_tower_04": {
+    "url": "assets/towers_ingame/bomb_tower_04.png",
+    "w": 21,
+    "h": 65
+  },
+  "bomb_tower_cluster_01": {
+    "url": "assets/towers_ingame/bomb_tower_cluster_01.png",
+    "w": 28,
+    "h": 87
+  },
+  "bomb_tower_cluster_02": {
+    "url": "assets/towers_ingame/bomb_tower_cluster_02.png",
+    "w": 28,
+    "h": 87
+  },
+  "bomb_tower_cluster_03": {
+    "url": "assets/towers_ingame/bomb_tower_cluster_03.png",
+    "w": 28,
+    "h": 87
+  },
+  "bomb_tower_cluster_04": {
+    "url": "assets/towers_ingame/bomb_tower_cluster_04.png",
+    "w": 28,
+    "h": 87
+  },
+  "bomb_tower_frag_01": {
+    "url": "assets/towers_ingame/bomb_tower_frag_01.png",
+    "w": 13,
+    "h": 40
+  },
+  "bomb_tower_frag_02": {
+    "url": "assets/towers_ingame/bomb_tower_frag_02.png",
+    "w": 13,
+    "h": 40
+  },
+  "bomb_tower_frag_03": {
+    "url": "assets/towers_ingame/bomb_tower_frag_03.png",
+    "w": 13,
+    "h": 40
+  },
+  "bomb_tower_frag_04": {
+    "url": "assets/towers_ingame/bomb_tower_frag_04.png",
+    "w": 13,
+    "h": 40
+  },
+  "bomb_tower_impact_01": {
+    "url": "assets/towers_ingame/bomb_tower_impact_01.png",
+    "w": 28,
+    "h": 87
+  },
+  "bomb_tower_impact_02": {
+    "url": "assets/towers_ingame/bomb_tower_impact_02.png",
+    "w": 28,
+    "h": 87
+  },
+  "bomb_tower_impact_03": {
+    "url": "assets/towers_ingame/bomb_tower_impact_03.png",
+    "w": 28,
+    "h": 87
+  },
+  "bomb_tower_impact_04": {
+    "url": "assets/towers_ingame/bomb_tower_impact_04.png",
+    "w": 28,
+    "h": 87
+  },
+  "bomb_tower_missile_01": {
+    "url": "assets/towers_ingame/bomb_tower_missile_01.png",
+    "w": 17,
+    "h": 56
+  },
+  "bomb_tower_missile_02": {
+    "url": "assets/towers_ingame/bomb_tower_missile_02.png",
+    "w": 17,
+    "h": 56
+  },
+  "bomb_tower_missile_03": {
+    "url": "assets/towers_ingame/bomb_tower_missile_03.png",
+    "w": 17,
+    "h": 56
+  },
+  "bomb_tower_muzzle_smoke_01": {
+    "url": "assets/towers_ingame/bomb_tower_muzzle_smoke_01.png",
+    "w": 49,
+    "h": 34
+  },
+  "bomb_tower_muzzle_smoke_02": {
+    "url": "assets/towers_ingame/bomb_tower_muzzle_smoke_02.png",
+    "w": 49,
+    "h": 34
+  },
+  "bomb_tower_muzzle_smoke_03": {
+    "url": "assets/towers_ingame/bomb_tower_muzzle_smoke_03.png",
+    "w": 49,
+    "h": 34
+  },
+  "bomb_tower_muzzle_smoke_04": {
+    "url": "assets/towers_ingame/bomb_tower_muzzle_smoke_04.png",
+    "w": 49,
+    "h": 34
+  },
+  "dart_monkey_arm_01": {
+    "url": "assets/towers_ingame/dart_monkey_arm_01.png",
+    "w": 62,
+    "h": 58
+  },
+  "dart_monkey_arm_02": {
+    "url": "assets/towers_ingame/dart_monkey_arm_02.png",
+    "w": 62,
+    "h": 58
+  },
+  "dart_monkey_arm_03": {
+    "url": "assets/towers_ingame/dart_monkey_arm_03.png",
+    "w": 62,
+    "h": 58
+  },
+  "supermonkey_arm_01": {
+    "url": "assets/towers_ingame/supermonkey_arm_01.png",
+    "w": 22,
+    "h": 49
+  },
+  "supermonkey_arm_02": {
+    "url": "assets/towers_ingame/supermonkey_arm_02.png",
+    "w": 22,
+    "h": 49
+  },
+  "supermonkey_tech_terror_arm_01": {
+    "url": "assets/towers_ingame/supermonkey_tech_terror_arm_01.png",
+    "w": 32,
+    "h": 60
+  },
+  "supermonkey_tech_terror_arm_02": {
+    "url": "assets/towers_ingame/supermonkey_tech_terror_arm_02.png",
+    "w": 32,
+    "h": 60
+  },
+  "tack_shooter_blade_maelstrom_01": {
+    "url": "assets/towers_ingame/tack_shooter_blade_maelstrom_01.png",
+    "w": 51,
+    "h": 51
+  },
+  "tack_shooter_blade_maelstrom_02": {
+    "url": "assets/towers_ingame/tack_shooter_blade_maelstrom_02.png",
+    "w": 51,
+    "h": 51
+  },
+  "tack_shooter_faster_firing_01": {
+    "url": "assets/towers_ingame/tack_shooter_faster_firing_01.png",
+    "w": 36,
+    "h": 36
+  },
+  "tack_shooter_faster_firing_02": {
+    "url": "assets/towers_ingame/tack_shooter_faster_firing_02.png",
+    "w": 36,
+    "h": 36
+  },
+  "tack_shooter_firing_01": {
+    "url": "assets/towers_ingame/tack_shooter_firing_01.png",
+    "w": 36,
+    "h": 36
+  },
+  "tack_shooter_firing_02": {
+    "url": "assets/towers_ingame/tack_shooter_firing_02.png",
+    "w": 36,
+    "h": 36
+  },
+  "tack_shooter_ring_of_fire_01": {
+    "url": "assets/towers_ingame/tack_shooter_ring_of_fire_01.png",
+    "w": 36,
+    "h": 71
+  },
+  "tack_shooter_ring_of_fire_02": {
+    "url": "assets/towers_ingame/tack_shooter_ring_of_fire_02.png",
+    "w": 36,
+    "h": 71
+  },
+  "tack_shooter_ring_of_fire_03": {
+    "url": "assets/towers_ingame/tack_shooter_ring_of_fire_03.png",
+    "w": 36,
+    "h": 71
+  },
+  "tack_shooter_ring_of_fire_flame_01": {
+    "url": "assets/towers_ingame/tack_shooter_ring_of_fire_flame_01.png",
+    "w": 8,
+    "h": 11
+  },
+  "tack_shooter_ring_of_fire_flame_02": {
+    "url": "assets/towers_ingame/tack_shooter_ring_of_fire_flame_02.png",
+    "w": 8,
+    "h": 11
+  },
+  "tack_shooter_ring_of_fire_flame_03": {
+    "url": "assets/towers_ingame/tack_shooter_ring_of_fire_flame_03.png",
+    "w": 8,
+    "h": 11
+  },
+  "tack_shooter_sprayer_01": {
+    "url": "assets/towers_ingame/tack_shooter_sprayer_01.png",
+    "w": 36,
+    "h": 36
+  },
+  "tack_shooter_sprayer_02": {
+    "url": "assets/towers_ingame/tack_shooter_sprayer_02.png",
+    "w": 36,
+    "h": 36
+  },
+  "bomb_tower_moab_assassin": {
+    "url": "assets/towers_ingame/bomb_tower_moab_assassin.png",
+    "w": 34,
+    "h": 84
+  },
+  "bomb_tower_moab_mauler": {
+    "url": "assets/towers_ingame/bomb_tower_moab_mauler.png",
+    "w": 28,
+    "h": 64
+  },
+  "bomb_tower_wheel": {
+    "url": "assets/towers_ingame/bomb_tower_wheel.png",
+    "w": 14,
+    "h": 37
+  },
+  "dart_monkey_body": {
+    "url": "assets/towers_ingame/dart_monkey_body.png",
+    "w": 62,
+    "h": 58
+  },
+  "dart_monkey_cape": {
+    "url": "assets/towers_ingame/dart_monkey_cape.png",
+    "w": 59,
+    "h": 32
+  },
+  "dart_monkey_catapult_body": {
+    "url": "assets/towers_ingame/dart_monkey_catapult_body.png",
+    "w": 55,
+    "h": 60
+  },
+  "dart_monkey_catapult_frame": {
+    "url": "assets/towers_ingame/dart_monkey_catapult_frame.png",
+    "w": 65,
+    "h": 67
+  },
+  "dart_monkey_catapult_frame_metal": {
+    "url": "assets/towers_ingame/dart_monkey_catapult_frame_metal.png",
+    "w": 65,
+    "h": 67
+  },
+  "dart_monkey_catapult_launcher_01": {
+    "url": "assets/towers_ingame/dart_monkey_catapult_launcher_01.png",
+    "w": 28,
+    "h": 77
+  },
+  "dart_monkey_catapult_launcher_02": {
+    "url": "assets/towers_ingame/dart_monkey_catapult_launcher_02.png",
+    "w": 28,
+    "h": 52
+  },
+  "dart_monkey_catapult_launcher_03": {
+    "url": "assets/towers_ingame/dart_monkey_catapult_launcher_03.png",
+    "w": 28,
+    "h": 57
+  },
+  "dart_monkey_plume_01": {
+    "url": "assets/towers_ingame/dart_monkey_plume_01.png",
+    "w": 62,
+    "h": 67
+  },
+  "dart_monkey_plume_02": {
+    "url": "assets/towers_ingame/dart_monkey_plume_02.png",
+    "w": 62,
+    "h": 67
+  },
+  "dart_monkeycatapult_helmet": {
+    "url": "assets/towers_ingame/dart_monkeycatapult_helmet.png",
+    "w": 55,
+    "h": 64
+  },
+  "ring_of_fire": {
+    "url": "assets/towers_ingame/ring_of_fire.png",
+    "w": 106,
+    "h": 106
+  },
+  "supermonkey": {
+    "url": "assets/towers_ingame/supermonkey.png",
+    "w": 31,
+    "h": 50
+  },
+  "supermonkey_arm": {
+    "url": "assets/towers_ingame/supermonkey_arm.png",
+    "w": 11,
+    "h": 29
+  },
+  "supermonkey_cape_green": {
+    "url": "assets/towers_ingame/supermonkey_cape_green.png",
+    "w": 22,
+    "h": 31
+  },
+  "supermonkey_cape_logo": {
+    "url": "assets/towers_ingame/supermonkey_cape_logo.png",
+    "w": 19,
+    "h": 13
+  },
+  "supermonkey_cape_purple": {
+    "url": "assets/towers_ingame/supermonkey_cape_purple.png",
+    "w": 22,
+    "h": 31
+  },
+  "supermonkey_cape_red": {
+    "url": "assets/towers_ingame/supermonkey_cape_red.png",
+    "w": 22,
+    "h": 31
+  },
+  "supermonkey_epic_range": {
+    "url": "assets/towers_ingame/supermonkey_epic_range.png",
+    "w": 38,
+    "h": 20
+  },
+  "supermonkey_fanclub": {
+    "url": "assets/towers_ingame/supermonkey_fanclub.png",
+    "w": 60,
+    "h": 64
+  },
+  "supermonkey_fanclub_cape": {
+    "url": "assets/towers_ingame/supermonkey_fanclub_cape.png",
+    "w": 59,
+    "h": 32
+  },
+  "supermonkey_laser_vision": {
+    "url": "assets/towers_ingame/supermonkey_laser_vision.png",
+    "w": 45,
+    "h": 22
+  },
+  "supermonkey_plasma_vision": {
+    "url": "assets/towers_ingame/supermonkey_plasma_vision.png",
+    "w": 34,
+    "h": 28
+  },
+  "supermonkey_robo_monkey": {
+    "url": "assets/towers_ingame/supermonkey_robo_monkey.png",
+    "w": 61,
+    "h": 63
+  },
+  "supermonkey_robo_monkey_arm": {
+    "url": "assets/towers_ingame/supermonkey_robo_monkey_arm.png",
+    "w": 16,
+    "h": 42
+  },
+  "supermonkey_sun_god": {
+    "url": "assets/towers_ingame/supermonkey_sun_god.png",
+    "w": 105,
+    "h": 89
+  },
+  "supermonkey_tech_terror": {
+    "url": "assets/towers_ingame/supermonkey_tech_terror.png",
+    "w": 76,
+    "h": 76
+  },
+  "tack_shooter_base": {
+    "url": "assets/towers_ingame/tack_shooter_base.png",
+    "w": 26,
+    "h": 52
+  },
+  "tack_shooter_blade_shooter_base": {
+    "url": "assets/towers_ingame/tack_shooter_blade_shooter_base.png",
+    "w": 51,
+    "h": 51
+  },
+  "tack_shooter_even_faster_logo": {
+    "url": "assets/towers_ingame/tack_shooter_even_faster_logo.png",
+    "w": 30,
+    "h": 31
+  },
+  "tack_shooter_tack_logo": {
+    "url": "assets/towers_ingame/tack_shooter_tack_logo.png",
+    "w": 14,
+    "h": 26
+  },
+  "bomb_tower_bomb_01": {
+    "url": "assets/projectiles/bomb_tower_bomb_01.png",
+    "w": 38,
+    "h": 51
+  },
+  "bomb_tower_bomb_red_01": {
+    "url": "assets/projectiles/bomb_tower_bomb_red_01.png",
+    "w": 38,
+    "h": 51
+  },
+  "explosion_01": {
+    "url": "assets/projectiles/explosion_01.png",
+    "w": 23,
+    "h": 25
+  },
+  "explosion_02": {
+    "url": "assets/projectiles/explosion_02.png",
+    "w": 52,
+    "h": 55
+  },
+  "explosion_05": {
+    "url": "assets/projectiles/explosion_05.png",
+    "w": 109,
+    "h": 112
+  },
+  "juggernaut_ball_01": {
+    "url": "assets/projectiles/juggernaut_ball_01.png",
+    "w": 70,
+    "h": 70
+  },
+  "juggernaut_ball_02": {
+    "url": "assets/projectiles/juggernaut_ball_02.png",
+    "w": 70,
+    "h": 70
+  },
+  "tack_shooter_blades_01": {
+    "url": "assets/projectiles/tack_shooter_blades_01.png",
+    "w": 74,
+    "h": 74
+  },
+  "tack_shooter_blades_02": {
+    "url": "assets/projectiles/tack_shooter_blades_02.png",
+    "w": 74,
+    "h": 74
+  },
+  "tacks_01": {
+    "url": "assets/projectiles/tacks_01.png",
+    "w": 61,
+    "h": 46
+  },
+  "tacks_02": {
+    "url": "assets/projectiles/tacks_02.png",
+    "w": 61,
+    "h": 46
+  },
+  "tacks_03": {
+    "url": "assets/projectiles/tacks_03.png",
+    "w": 61,
+    "h": 46
+  },
+  "bomb_tower_missile": {
+    "url": "assets/projectiles/bomb_tower_missile.png",
+    "w": 20,
+    "h": 75
+  },
+  "bomb_tower_missile_full": {
+    "url": "assets/projectiles/bomb_tower_missile_full.png",
+    "w": 40,
+    "h": 75
+  },
+  "bomb_tower_moab_assassin_full": {
+    "url": "assets/projectiles/bomb_tower_moab_assassin_full.png",
+    "w": 68,
+    "h": 84
+  },
+  "bomb_tower_moab_mauler_full": {
+    "url": "assets/projectiles/bomb_tower_moab_mauler_full.png",
+    "w": 55,
+    "h": 64
+  },
+  "bomb_tower_special_ability_projectile_full": {
+    "url": "assets/projectiles/bomb_tower_special_ability_projectile_full.png",
+    "w": 59,
+    "h": 86
+  },
+  "dart_monkey_dart": {
+    "url": "assets/projectiles/dart_monkey_dart.png",
+    "w": 12,
+    "h": 40
+  },
+  "monkey_temple_supermonkey_projectile": {
+    "url": "assets/projectiles/monkey_temple_supermonkey_projectile.png",
+    "w": 36,
+    "h": 36
+  },
+  "pop": {
+    "url": "assets/projectiles/pop.png",
+    "w": 85,
+    "h": 87
+  },
+  "spikeopult_ball": {
+    "url": "assets/projectiles/spikeopult_ball.png",
+    "w": 26,
+    "h": 26
+  },
+  "supermonkey_laser_vision_projectile": {
+    "url": "assets/projectiles/supermonkey_laser_vision_projectile.png",
+    "w": 36,
+    "h": 37
+  },
+  "supermonkey_laser_vision_projectile_single": {
+    "url": "assets/projectiles/supermonkey_laser_vision_projectile_single.png",
+    "w": 12,
+    "h": 37
+  },
+  "supermonkey_plasma_vision_projectile": {
+    "url": "assets/projectiles/supermonkey_plasma_vision_projectile.png",
+    "w": 49,
+    "h": 55
+  },
+  "supermonkey_sun_god_projectile": {
+    "url": "assets/projectiles/supermonkey_sun_god_projectile.png",
+    "w": 45,
+    "h": 32
+  },
+  "supermonkey_tech_terror_projectile": {
+    "url": "assets/projectiles/supermonkey_tech_terror_projectile.png",
+    "w": 59,
+    "h": 66
+  },
+  "tack_shooter_tack": {
+    "url": "assets/projectiles/tack_shooter_tack.png",
+    "w": 9,
+    "h": 23
+  },
+  "tech_terror_energy_ball": {
+    "url": "assets/projectiles/tech_terror_energy_ball.png",
+    "w": 69,
+    "h": 69
+  },
+  "tech_terror_energy_overlay": {
+    "url": "assets/projectiles/tech_terror_energy_overlay.png",
+    "w": 131,
+    "h": 131
+  },
+  "ceramic_01": {
+    "url": "assets/bloons/ceramic_01.png",
+    "w": 40,
+    "h": 54
+  },
+  "ceramic_02": {
+    "url": "assets/bloons/ceramic_02.png",
+    "w": 40,
+    "h": 54
+  },
+  "ceramic_03": {
+    "url": "assets/bloons/ceramic_03.png",
+    "w": 40,
+    "h": 54
+  },
+  "ceramic_04": {
+    "url": "assets/bloons/ceramic_04.png",
+    "w": 40,
+    "h": 54
+  },
+  "ceramic_05": {
+    "url": "assets/bloons/ceramic_05.png",
+    "w": 40,
+    "h": 54
+  },
+  "ceramic_regen_01": {
+    "url": "assets/bloons/ceramic_regen_01.png",
+    "w": 60,
+    "h": 57
+  },
+  "ceramic_regen_02": {
+    "url": "assets/bloons/ceramic_regen_02.png",
+    "w": 60,
+    "h": 57
+  },
+  "ceramic_regen_03": {
+    "url": "assets/bloons/ceramic_regen_03.png",
+    "w": 60,
+    "h": 57
+  },
+  "ceramic_regen_04": {
+    "url": "assets/bloons/ceramic_regen_04.png",
+    "w": 60,
+    "h": 57
+  },
+  "ceramic_regen_05": {
+    "url": "assets/bloons/ceramic_regen_05.png",
+    "w": 60,
+    "h": 57
+  },
+  "lead": {
+    "url": "assets/bloons/lead.png",
+    "w": 40,
+    "h": 54
+  },
+  "lead_regen": {
+    "url": "assets/bloons/lead_regen.png",
+    "w": 60,
+    "h": 57
+  },
+  "rainbow": {
+    "url": "assets/bloons/rainbow.png",
+    "w": 40,
+    "h": 54
+  },
+  "rainbow_regen": {
+    "url": "assets/bloons/rainbow_regen.png",
+    "w": 60,
+    "h": 57
+  },
+  "zebra": {
+    "url": "assets/bloons/zebra.png",
+    "w": 40,
+    "h": 54
+  },
+  "zebra_regen": {
+    "url": "assets/bloons/zebra_regen.png",
+    "w": 60,
+    "h": 57
+  },
+  "bfb": {
+    "url": "assets/bloons/bfb.png",
+    "w": 88,
+    "h": 88
+  },
+  "bloon_ceramic": {
+    "url": "assets/bloons/bloon_ceramic.png",
+    "w": 72,
+    "h": 72
+  },
+  "bloon_lead": {
+    "url": "assets/bloons/bloon_lead.png",
+    "w": 72,
+    "h": 72
+  },
+  "bloon_rainbow": {
+    "url": "assets/bloons/bloon_rainbow.png",
+    "w": 71,
+    "h": 71
+  },
+  "bloon_zebra": {
+    "url": "assets/bloons/bloon_zebra.png",
+    "w": 72,
+    "h": 72
+  },
+  "camo_overlay": {
+    "url": "assets/bloons/camo_overlay.png",
+    "w": 71,
+    "h": 72
+  },
+  "camo_regen_overlay": {
+    "url": "assets/bloons/camo_regen_overlay.png",
+    "w": 71,
+    "h": 71
+  },
+  "moab": {
+    "url": "assets/bloons/moab.png",
+    "w": 88,
+    "h": 88
+  },
+  "stock_bloon": {
+    "url": "assets/bloons/stock_bloon.png",
+    "w": 72,
+    "h": 72
+  },
+  "stock_bloon_highlight": {
+    "url": "assets/bloons/stock_bloon_highlight.png",
+    "w": 72,
+    "h": 72
+  },
+  "stock_bloon_shadow": {
+    "url": "assets/bloons/stock_bloon_shadow.png",
+    "w": 72,
+    "h": 72
+  },
+  "stock_regen_bloon": {
+    "url": "assets/bloons/stock_regen_bloon.png",
+    "w": 72,
+    "h": 72
+  },
+  "stock_regen_bloon_highlight": {
+    "url": "assets/bloons/stock_regen_bloon_highlight.png",
+    "w": 72,
+    "h": 72
+  },
+  "zomg": {
+    "url": "assets/bloons/zomg.png",
+    "w": 88,
+    "h": 88
+  },
+  "bfb_eating_01": {
+    "url": "assets/moabs/bfb_eating_01.png",
+    "w": 263,
+    "h": 178
+  },
+  "zomg_eating_02": {
+    "url": "assets/moabs/zomg_eating_02.png",
+    "w": 262,
+    "h": 176
+  },
+  "bfb_eating_02": {
+    "url": "assets/moabs/bfb_eating_02.png",
+    "w": 259,
+    "h": 162
+  },
+  "zomg_eating_01": {
+    "url": "assets/moabs/zomg_eating_01.png",
+    "w": 258,
+    "h": 183
+  },
+  "bfb_eating_03": {
+    "url": "assets/moabs/bfb_eating_03.png",
+    "w": 249,
+    "h": 159
+  },
+  "zomg_eating_03": {
+    "url": "assets/moabs/zomg_eating_03.png",
+    "w": 246,
+    "h": 144
+  },
+  "bfb_eating_04": {
+    "url": "assets/moabs/bfb_eating_04.png",
+    "w": 232,
+    "h": 123
+  },
+  "zomg_eating_04": {
+    "url": "assets/moabs/zomg_eating_04.png",
+    "w": 206,
+    "h": 111
+  },
+  "blimp_damage_01": {
+    "url": "assets/moabs/blimp_damage_01.png",
+    "w": 136,
+    "h": 155
+  },
+  "blimp_damage_02": {
+    "url": "assets/moabs/blimp_damage_02.png",
+    "w": 175,
+    "h": 172
+  },
+  "moab_eating_04": {
+    "url": "assets/moabs/moab_eating_04.png",
+    "w": 154,
+    "h": 80
+  },
+  "moab_eating_03": {
+    "url": "assets/moabs/moab_eating_03.png",
+    "w": 127,
+    "h": 116
+  },
+  "moab_eating_02": {
+    "url": "assets/moabs/moab_eating_02.png",
+    "w": 123,
+    "h": 127
+  },
+  "bfb_eating_05": {
+    "url": "assets/moabs/bfb_eating_05.png",
+    "w": 120,
+    "h": 110
+  },
+  "zomg_eating_05": {
+    "url": "assets/moabs/zomg_eating_05.png",
+    "w": 112,
+    "h": 66
+  },
+  "moab_eating_01": {
+    "url": "assets/moabs/moab_eating_01.png",
+    "w": 105,
+    "h": 135
+  },
+  "moab_eating_05": {
+    "url": "assets/moabs/moab_eating_05.png",
+    "w": 89,
+    "h": 52
+  },
+  "zomg_undamaged": {
+    "url": "assets/moabs/zomg_undamaged.png",
+    "w": 80,
+    "h": 304
+  },
+  "bfb_undamaged": {
+    "url": "assets/moabs/bfb_undamaged.png",
+    "w": 76,
+    "h": 305
+  },
+  "moab_undamaged": {
+    "url": "assets/moabs/moab_undamaged.png",
+    "w": 53,
+    "h": 218
+  },
+  "smoke_01": {
+    "url": "assets/moabs/smoke_01.png",
+    "w": 28,
+    "h": 31
+  },
+  "smoke_02": {
+    "url": "assets/moabs/smoke_02.png",
+    "w": 23,
+    "h": 31
+  },
+  "smoke_03": {
+    "url": "assets/moabs/smoke_03.png",
+    "w": 14,
+    "h": 21
+  },
+  "supermonkey_sun_god_icon": {
+    "url": "assets/upgrades/supermonkey_sun_god_icon.png",
+    "w": 131,
+    "h": 89
+  },
+  "supermonkey_laser_vision_icon": {
+    "url": "assets/upgrades/supermonkey_laser_vision_icon.png",
+    "w": 125,
+    "h": 68
+  },
+  "supermonkey_plasma_vision_icon": {
+    "url": "assets/upgrades/supermonkey_plasma_vision_icon.png",
+    "w": 119,
+    "h": 83
+  },
+  "tack_shooter_maelstrom_icon": {
+    "url": "assets/upgrades/tack_shooter_maelstrom_icon.png",
+    "w": 116,
+    "h": 78
+  },
+  "bomb_assassin_icon": {
+    "url": "assets/upgrades/bomb_assassin_icon.png",
+    "w": 114,
+    "h": 65
+  },
+  "bomb_mauler_icon": {
+    "url": "assets/upgrades/bomb_mauler_icon.png",
+    "w": 114,
+    "h": 65
+  },
+  "supermonkey_epic_range_icon": {
+    "url": "assets/upgrades/supermonkey_epic_range_icon.png",
+    "w": 114,
+    "h": 65
+  },
+  "dart_monkey_enhanced_eyesight_icon": {
+    "url": "assets/upgrades/dart_monkey_enhanced_eyesight_icon.png",
+    "w": 114,
+    "h": 53
+  },
+  "tack_shooter_super_range_icon": {
+    "url": "assets/upgrades/tack_shooter_super_range_icon.png",
+    "w": 112,
+    "h": 62
+  },
+  "bomb_extra_range_icon": {
+    "url": "assets/upgrades/bomb_extra_range_icon.png",
+    "w": 111,
+    "h": 88
+  },
+  "bomb_missile_icon": {
+    "url": "assets/upgrades/bomb_missile_icon.png",
+    "w": 110,
+    "h": 63
+  },
+  "dart_monkey_longer_range_icon": {
+    "url": "assets/upgrades/dart_monkey_longer_range_icon.png",
+    "w": 109,
+    "h": 61
+  },
+  "supermonkey_super_range_icon": {
+    "url": "assets/upgrades/supermonkey_super_range_icon.png",
+    "w": 109,
+    "h": 61
+  },
+  "tack_shooter_extra_range_icon": {
+    "url": "assets/upgrades/tack_shooter_extra_range_icon.png",
+    "w": 109,
+    "h": 54
+  },
+  "dart_monkey_fanclub_icon": {
+    "url": "assets/upgrades/dart_monkey_fanclub_icon.png",
+    "w": 105,
+    "h": 74
+  },
+  "dart_monkey_razor_icon": {
+    "url": "assets/upgrades/dart_monkey_razor_icon.png",
+    "w": 104,
+    "h": 63
+  },
+  "dart_monkey_sharp_shots_icon": {
+    "url": "assets/upgrades/dart_monkey_sharp_shots_icon.png",
+    "w": 104,
+    "h": 63
+  },
+  "tack_shooter_even_faster_firing_icon": {
+    "url": "assets/upgrades/tack_shooter_even_faster_firing_icon.png",
+    "w": 103,
+    "h": 82
+  },
+  "supermonkey_tech_terror_icon": {
+    "url": "assets/upgrades/supermonkey_tech_terror_icon.png",
+    "w": 101,
+    "h": 101
+  },
+  "supermonkey_robomonkey_icon": {
+    "url": "assets/upgrades/supermonkey_robomonkey_icon.png",
+    "w": 97,
+    "h": 95
+  },
+  "tack_shooter_sprayer_icon": {
+    "url": "assets/upgrades/tack_shooter_sprayer_icon.png",
+    "w": 94,
+    "h": 94
+  },
+  "supermonkey_temple_icon": {
+    "url": "assets/upgrades/supermonkey_temple_icon.png",
+    "w": 92,
+    "h": 94
+  },
+  "bomb_cluster_icon": {
+    "url": "assets/upgrades/bomb_cluster_icon.png",
+    "w": 92,
+    "h": 85
+  },
+  "tack_shooter_blade_icon": {
+    "url": "assets/upgrades/tack_shooter_blade_icon.png",
+    "w": 88,
+    "h": 88
+  },
+  "tack_shooter_faster_firing_icon": {
+    "url": "assets/upgrades/tack_shooter_faster_firing_icon.png",
+    "w": 87,
+    "h": 76
+  },
+  "dart_monkey_juggernaut_icon": {
+    "url": "assets/upgrades/dart_monkey_juggernaut_icon.png",
+    "w": 86,
+    "h": 86
+  },
+  "tack_shooter_rof_icon": {
+    "url": "assets/upgrades/tack_shooter_rof_icon.png",
+    "w": 82,
+    "h": 80
+  },
+  "bomb_frag_icon": {
+    "url": "assets/upgrades/bomb_frag_icon.png",
+    "w": 78,
+    "h": 78
+  },
+  "dart_monkey_spikeopult_icon": {
+    "url": "assets/upgrades/dart_monkey_spikeopult_icon.png",
+    "w": 74,
+    "h": 74
+  },
+  "bomb_impact_icon": {
+    "url": "assets/upgrades/bomb_impact_icon.png",
+    "w": 70,
+    "h": 73
+  },
+  "dart_monkey_triple_icon": {
+    "url": "assets/upgrades/dart_monkey_triple_icon.png",
+    "w": 66,
+    "h": 63
+  },
+  "bomb_bigger_icon": {
+    "url": "assets/upgrades/bomb_bigger_icon.png",
+    "w": 58,
+    "h": 85
+  },
+  "lower_hud_bg": {
+    "url": "assets/hud/lower_hud_bg.png",
+    "w": 960,
+    "h": 126
+  },
+  "energy_bar_bg": {
+    "url": "assets/hud/energy_bar_bg.png",
+    "w": 507,
+    "h": 36
+  },
+  "energy_bar_highlight": {
+    "url": "assets/hud/energy_bar_highlight.png",
+    "w": 507,
+    "h": 36
+  },
+  "target_box": {
+    "url": "assets/hud/target_box.png",
+    "w": 243,
+    "h": 46
+  },
+  "rect_button": {
+    "url": "assets/hud/rect_button.png",
+    "w": 196,
+    "h": 54
+  },
+  "rect_button_grey": {
+    "url": "assets/hud/rect_button_grey.png",
+    "w": 196,
+    "h": 54
+  },
+  "rect_button_pressed": {
+    "url": "assets/hud/rect_button_pressed.png",
+    "w": 196,
+    "h": 54
+  },
+  "rect_button_selected": {
+    "url": "assets/hud/rect_button_selected.png",
+    "w": 196,
+    "h": 54
+  },
+  "side_hud_bg": {
+    "url": "assets/hud/side_hud_bg.png",
+    "w": 188,
+    "h": 640
+  },
+  "upgrade_box_green": {
+    "url": "assets/hud/upgrade_box_green.png",
+    "w": 188,
+    "h": 115
+  },
+  "upgrade_box_grey": {
+    "url": "assets/hud/upgrade_box_grey.png",
+    "w": 188,
+    "h": 115
+  },
+  "upgrade_box_red": {
+    "url": "assets/hud/upgrade_box_red.png",
+    "w": 188,
+    "h": 115
+  },
+  "top_bar": {
+    "url": "assets/hud/top_bar.png",
+    "w": 185,
+    "h": 86
+  },
+  "supermonkey_avatar_super_range_small": {
+    "url": "assets/hud/supermonkey_avatar_super_range_small.png",
+    "w": 130,
+    "h": 102
+  },
+  "round_button": {
+    "url": "assets/hud/round_button.png",
+    "w": 129,
+    "h": 129
+  },
+  "round_button_greyed": {
+    "url": "assets/hud/round_button_greyed.png",
+    "w": 129,
+    "h": 129
+  },
+  "dart_monkey_avatar_razor_sharp_small": {
+    "url": "assets/hud/dart_monkey_avatar_razor_sharp_small.png",
+    "w": 121,
+    "h": 95
+  },
+  "tack_shooter_avatar_rof_small": {
+    "url": "assets/hud/tack_shooter_avatar_rof_small.png",
+    "w": 119,
+    "h": 98
+  },
+  "tack_shooter_avatar_blade_maelstrom_small": {
+    "url": "assets/hud/tack_shooter_avatar_blade_maelstrom_small.png",
+    "w": 115,
+    "h": 99
+  },
+  "dart_monkey_avatar_sharp_shots_small": {
+    "url": "assets/hud/dart_monkey_avatar_sharp_shots_small.png",
+    "w": 113,
+    "h": 98
+  },
+  "tack_shooter_avatar_even_faster_shooting_small": {
+    "url": "assets/hud/tack_shooter_avatar_even_faster_shooting_small.png",
+    "w": 112,
+    "h": 85
+  },
+  "supermonkey_avatar_robomonkey_small": {
+    "url": "assets/hud/supermonkey_avatar_robomonkey_small.png",
+    "w": 111,
+    "h": 97
+  },
+  "tower_profile_pic_box": {
+    "url": "assets/hud/tower_profile_pic_box.png",
+    "w": 110,
+    "h": 110
+  },
+  "bomb_avatar_bigger_bombs_small": {
+    "url": "assets/hud/bomb_avatar_bigger_bombs_small.png",
+    "w": 109,
+    "h": 110
+  },
+  "bomb_avatar_bloon_impact_small": {
+    "url": "assets/hud/bomb_avatar_bloon_impact_small.png",
+    "w": 109,
+    "h": 106
+  },
+  "supermonkey_avatar_small": {
+    "url": "assets/hud/supermonkey_avatar_small.png",
+    "w": 109,
+    "h": 102
+  },
+  "dart_monkey_avatar_supermonkey_fanclub_small": {
+    "url": "assets/hud/dart_monkey_avatar_supermonkey_fanclub_small.png",
+    "w": 109,
+    "h": 96
+  },
+  "dart_monkey_avatar_juggernaut_small": {
+    "url": "assets/hud/dart_monkey_avatar_juggernaut_small.png",
+    "w": 109,
+    "h": 90
+  },
+  "tack_shooter_avatar_faster_shooting_small": {
+    "url": "assets/hud/tack_shooter_avatar_faster_shooting_small.png",
+    "w": 109,
+    "h": 88
+  },
+  "tack_shooter_avatar_blade_shooter_small": {
+    "url": "assets/hud/tack_shooter_avatar_blade_shooter_small.png",
+    "w": 105,
+    "h": 98
+  },
+  "bomb_avatar_small": {
+    "url": "assets/hud/bomb_avatar_small.png",
+    "w": 104,
+    "h": 95
+  },
+  "energy_bar_lightning": {
+    "url": "assets/hud/energy_bar_lightning.png",
+    "w": 104,
+    "h": 15
+  },
+  "tack_shooter_avatar_sprayer_small": {
+    "url": "assets/hud/tack_shooter_avatar_sprayer_small.png",
+    "w": 103,
+    "h": 114
+  },
+  "sell_box": {
+    "url": "assets/hud/sell_box.png",
+    "w": 103,
+    "h": 62
+  },
+  "boost_button": {
+    "url": "assets/hud/boost_button.png",
+    "w": 102,
+    "h": 98
+  },
+  "boost_button_greyed": {
+    "url": "assets/hud/boost_button_greyed.png",
+    "w": 102,
+    "h": 98
+  },
+  "supermonkey_avatar_plasma_vision_small": {
+    "url": "assets/hud/supermonkey_avatar_plasma_vision_small.png",
+    "w": 101,
+    "h": 111
+  },
+  "close_button": {
+    "url": "assets/hud/close_button.png",
+    "w": 101,
+    "h": 84
+  },
+  "bomb_avatar_frag_bombs_small": {
+    "url": "assets/hud/bomb_avatar_frag_bombs_small.png",
+    "w": 101,
+    "h": 68
+  },
+  "tack_shooter_avatar_super_range_small": {
+    "url": "assets/hud/tack_shooter_avatar_super_range_small.png",
+    "w": 100,
+    "h": 76
+  },
+  "dart_monkey_avatar_increased_range_small": {
+    "url": "assets/hud/dart_monkey_avatar_increased_range_small.png",
+    "w": 99,
+    "h": 110
+  },
+  "tack_shooter_avatar_small": {
+    "url": "assets/hud/tack_shooter_avatar_small.png",
+    "w": 94,
+    "h": 98
+  },
+  "bin": {
+    "url": "assets/hud/bin.png",
+    "w": 79,
+    "h": 85
+  },
+  "tower_boost_icon": {
+    "url": "assets/hud/tower_boost_icon.png",
+    "w": 79,
+    "h": 66
+  },
+  "dart_monkey_avatar_small": {
+    "url": "assets/hud/dart_monkey_avatar_small.png",
+    "w": 78,
+    "h": 77
+  },
+  "abilities_icon": {
+    "url": "assets/hud/abilities_icon.png",
+    "w": 78,
+    "h": 75
+  },
+  "supermonkey_icon": {
+    "url": "assets/hud/supermonkey_icon.png",
+    "w": 77,
+    "h": 81
+  },
+  "tower_thumbs_box": {
+    "url": "assets/hud/tower_thumbs_box.png",
+    "w": 76,
+    "h": 74
+  },
+  "tower_thumbs_box_red": {
+    "url": "assets/hud/tower_thumbs_box_red.png",
+    "w": 76,
+    "h": 74
+  },
+  "supermonkey_avatar_sun_god_small": {
+    "url": "assets/hud/supermonkey_avatar_sun_god_small.png",
+    "w": 72,
+    "h": 105
+  },
+  "supermonkey_avatar_monkey_temple_small": {
+    "url": "assets/hud/supermonkey_avatar_monkey_temple_small.png",
+    "w": 72,
+    "h": 91
+  },
+  "tack_shooter_icon": {
+    "url": "assets/hud/tack_shooter_icon.png",
+    "w": 69,
+    "h": 73
+  },
+  "dart_monkey_icon": {
+    "url": "assets/hud/dart_monkey_icon.png",
+    "w": 68,
+    "h": 74
+  },
+  "tech_terror_icon": {
+    "url": "assets/hud/tech_terror_icon.png",
+    "w": 76,
+    "h": 74
+  },
+  "bloon_boost_icon": {
+    "url": "assets/hud/bloon_boost_icon.png",
+    "w": 65,
+    "h": 54
+  },
+  "blade_maelstrom_icon": {
+    "url": "assets/hud/blade_maelstrom_icon.png",
+    "w": 76,
+    "h": 74
+  },
+  "bomb_icon": {
+    "url": "assets/hud/bomb_icon.png",
+    "w": 63,
+    "h": 73
+  },
+  "moab_assassin_icon": {
+    "url": "assets/hud/moab_assassin_icon.png",
+    "w": 76,
+    "h": 74
+  },
+  "bloon_boost_star_03": {
+    "url": "assets/hud/bloon_boost_star_03.png",
+    "w": 62,
+    "h": 62
+  },
+  "supermonkey_fanclub_icon": {
+    "url": "assets/hud/supermonkey_fanclub_icon.png",
+    "w": 76,
+    "h": 74
+  },
+  "centre_strip_bg": {
+    "url": "assets/hud/centre_strip_bg.png",
+    "w": 52,
+    "h": 640
+  },
+  "centre_brick_02": {
+    "url": "assets/hud/centre_brick_02.png",
+    "w": 52,
+    "h": 134
+  },
+  "centre_brick_01": {
+    "url": "assets/hud/centre_brick_01.png",
+    "w": 52,
+    "h": 119
+  },
+  "boost_pulse_10perc_yellow": {
+    "url": "assets/hud/boost_pulse_10perc_yellow.png",
+    "w": 44,
+    "h": 45
+  },
+  "bloon_boost_star_02": {
+    "url": "assets/hud/bloon_boost_star_02.png",
+    "w": 39,
+    "h": 39
+  },
+  "upgrade_path_bg": {
+    "url": "assets/hud/upgrade_path_bg.png",
+    "w": 29,
+    "h": 115
+  },
+  "lives_icon": {
+    "url": "assets/hud/lives_icon.png",
+    "w": 28,
+    "h": 30
+  },
+  "energy_icon": {
+    "url": "assets/hud/energy_icon.png",
+    "w": 26,
+    "h": 42
+  },
+  "hourglass_icon": {
+    "url": "assets/hud/hourglass_icon.png",
+    "w": 26,
+    "h": 29
+  },
+  "bloon_boost_star_01": {
+    "url": "assets/hud/bloon_boost_star_01.png",
+    "w": 24,
+    "h": 24
+  },
+  "upgrade_path_green_cell": {
+    "url": "assets/hud/upgrade_path_green_cell.png",
+    "w": 21,
+    "h": 21
+  },
+  "cash_icon": {
+    "url": "assets/hud/cash_icon.png",
+    "w": 20,
+    "h": 23
+  },
+  "buccaneer": {
+    "url": "assets/menu/buccaneer.png",
+    "w": 287,
+    "h": 357
+  },
+  "buccaneer_sea": {
+    "url": "assets/menu/buccaneer_sea.png",
+    "w": 273,
+    "h": 115
+  },
+  "cloud_01": {
+    "url": "assets/menu/cloud_01.png",
+    "w": 422,
+    "h": 80
+  },
+  "cloud_02": {
+    "url": "assets/menu/cloud_02.png",
+    "w": 387,
+    "h": 101
+  },
+  "cloud_03": {
+    "url": "assets/menu/cloud_03.png",
+    "w": 221,
+    "h": 61
+  },
+  "colosseum": {
+    "url": "assets/menu/colosseum.png",
+    "w": 208,
+    "h": 146
+  },
+  "colosseum_hill": {
+    "url": "assets/menu/colosseum_hill.png",
+    "w": 342,
+    "h": 96
+  },
+  "copter": {
+    "url": "assets/menu/copter.png",
+    "w": 164,
+    "h": 123
+  },
+  "island": {
+    "url": "assets/menu/island.png",
+    "w": 393,
+    "h": 135
+  },
+  "land": {
+    "url": "assets/menu/land.png",
+    "w": 792,
+    "h": 229
+  },
+  "large_button_tab_championship": {
+    "url": "assets/menu/large_button_tab_championship.png",
+    "w": 497,
+    "h": 129
+  },
+  "large_button_tab_right_championship": {
+    "url": "assets/menu/large_button_tab_right_championship.png",
+    "w": 497,
+    "h": 129
+  },
+  "moab_assassin": {
+    "url": "assets/menu/moab_assassin.png",
+    "w": 168,
+    "h": 224
+  },
+  "monkey": {
+    "url": "assets/menu/monkey.png",
+    "w": 132,
+    "h": 162
+  },
+  "private_battle_icon": {
+    "url": "assets/menu/private_battle_icon.png",
+    "w": 439,
+    "h": 222
+  },
+  "sea": {
+    "url": "assets/menu/sea.png",
+    "w": 1157,
+    "h": 443
+  },
+  "sun_glow": {
+    "url": "assets/menu/sun_glow.png",
+    "w": 285,
+    "h": 285
+  },
+  "title_text": {
+    "url": "assets/menu/title_text.png",
+    "w": 600,
+    "h": 290
+  },
+  "village": {
+    "url": "assets/menu/village.png",
+    "w": 262,
+    "h": 195
+  },
+  "welcome": {
+    "url": "assets/menu/welcome.png",
+    "w": 458,
+    "h": 181
+  }
+}
